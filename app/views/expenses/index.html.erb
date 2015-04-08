@@ -1,0 +1,12 @@
+<h1>Expenses#index</h1>
+
+<%= link_to"create new expense" , new_expense_path  %>
+
+<br>
+<br>
+
+<% @expenses.each do |expense| %>
+    <%= link_to expense.title , expense_path(expense) %>
+    <br>
+    <br>
+<% end %>

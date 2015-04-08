@@ -1,0 +1,10 @@
+<br><br><br><br>
+<%= simple_form_for expense do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description , as: :text %>
+    <%= f.input :amount %>
+
+    <%= f.hidden_field :user_id %>
+
+    <%= f.button :submit %>
+<% end %>
