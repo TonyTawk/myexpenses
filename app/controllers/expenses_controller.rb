@@ -8,7 +8,7 @@ class ExpensesController < ApplicationController
   end
 
   def index
-    @expenses = Expense.search(params[:search] , current_user.id)
+    @expenses = Expense.filter(params[:search], params[:type], params[:tag], params[:category], params[:start_time], params[:end_time], current_user.id)
   end
 
   def new

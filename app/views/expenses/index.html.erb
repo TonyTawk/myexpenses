@@ -4,6 +4,29 @@
 <br>
 
 
+<h2>Filter By Category</h2>
+
+<% Category.all.each do |category| %>
+    <%= link_to category.name, expenses_path(category: category.url_name, tag: params[:tag]) %> |
+<% end %>
+
+
+<h2>Filter By Tag</h2>
+
+<% Tag.all.each do |tag| %>
+    <%= link_to tag.name, expenses_path(category: params[:category], tag: tag.url_name) %> |
+<% end %>
+
+
+<h2>Filter By Type</h2>
+
+<%= link_to "All", expenses_path %> |
+
+<%= link_to "Income", expenses_path(type: "income") %> |
+
+<%= link_to "Spendings", expenses_path(type: "spending") %>
+
+
 <h2>Search by title or description</h2>
 <%= form_tag expenses_path, :method => 'get' do %>
     <p>

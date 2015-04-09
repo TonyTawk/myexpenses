@@ -6,7 +6,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
-  resources :expenses
+  match "myexpenses(/:type)(/category/:category)(/tag/:tag)(/time/:start_time(/:end_time))", to: "expenses#index", as: :expenses, via: :get
+  resources :expenses , except: :index
   root to: 'expenses#index'
 
   # Example of regular route:
