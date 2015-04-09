@@ -3,6 +3,17 @@
 <%= link_to "create new expense", new_expense_path %>
 <br>
 
+
+<h2>Search by title or description</h2>
+<%= form_tag expenses_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+<% end %>
+
+
+
 <table border="3">
   <tr>
     <th>Manage</th>

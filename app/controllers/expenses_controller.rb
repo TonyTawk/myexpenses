@@ -8,7 +8,7 @@ class ExpensesController < ApplicationController
   end
 
   def index
-    @expenses = current_user.expenses
+    @expenses = Expense.search(params[:search] , current_user.id)
   end
 
   def new
