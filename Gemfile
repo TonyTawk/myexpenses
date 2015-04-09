@@ -43,3 +43,6 @@ gem 'devise'
 gem "cancan"
 
 gem 'simple_form'
+
+gem 'jquery-datetimepicker-rails'
+

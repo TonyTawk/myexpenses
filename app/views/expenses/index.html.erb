@@ -1,12 +1,58 @@
 <h1>Expenses#index</h1>
 
-<%= link_to"create new expense" , new_expense_path  %>
-
-<br>
+<%= link_to "create new expense", new_expense_path %>
 <br>
 
-<% @expenses.each do |expense| %>
-    <%= link_to expense.title , expense_path(expense) %>
-    <br>
-    <br>
-<% end %>
+<table border="3">
+  <tr>
+    <th>Manage</th>
+    <th>Tilte</th>
+    <th>Description</th>
+    <th>Amount</th>
+    <th>Time</th>
+    <th>Type</th>
+    <th>Category</th>
+    <th>Tags</th>
+  </tr>
+
+  <% @expenses.each do |expense| %>
+      <tr>
+        <td>
+          <%= link_to "Click Here", expense_path(expense) %>
+        </td>
+        <td>
+          <%= expense.title %>
+        </td>
+        <td>
+          <%= expense.description %>
+        </td>
+        <td>
+          <%= expense.amount %>
+        </td>
+        <td>
+          <%= expense.time %>
+        </td>
+        <td>
+          <%= expense.expense_type %>
+        </td>
+        <td>
+          <% unless expense.category.blank? %>
+              <%= expense.category.name %>
+          <% end %>
+        </td>
+        <td>
+          <% unless expense.tags.blank? %>
+              <% expense.tags.each do |tag| %>
+                  <%= tag.name %>
+                  <br>
+              <% end %>
+          <% end %>
+
+        </td>
+      </tr>
+      <br>
+      <br>
+  <% end %>
+</table>
+
+

@@ -1,10 +1,45 @@
 <br><br><br><br>
 <%= simple_form_for expense do |f| %>
     <%= f.input :title %>
-    <%= f.input :description , as: :text %>
+
+    <br>
+    <br>
+
+    <%= f.input :description, as: :text %>
+
+    <br>
+    <br>
+
     <%= f.input :amount %>
 
-    <%= f.hidden_field :user_id %>
+    <br>
+    <br>
 
+    <div class="field">
+      <%= f.label :tag_ids, "Tags" %><br/>
+      <%= f.collection_select :tag_ids, Tag.order(:name), :id, :name, {}, {multiple: true} %>
+    </div>
+
+    <br>
+
+    <%= f.label :category_id, "Category" %><br/>
+    <%= f.select :category_id, Category.all.map { |c| [c.name, c.id, {:name => c.name}] } %>
+
+    <br>
+    <br>
+
+    <%= f.label :expense_type, "Type" %><br/>
+    <%= f.select :expense_type, ["Spending", "Income"] %>
+
+    <br>
+    <br>
+
+    <%= f.input :time, :input_html => {:id => "datetimepicker"} %>
+
+    <br>
+    <br>
+
+    <%= f.hidden_field :user_id %>
     <%= f.button :submit %>
+
 <% end %>
