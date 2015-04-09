@@ -8,7 +8,7 @@ class ExpensesController < ApplicationController
   end
 
   def index
-    @expenses = Expense.filter(params[:search], params[:type], params[:tag], params[:category], params[:start_time], params[:end_time], current_user.id)
+    @expenses = Expense.filter(params[:search], params[:type], params[:tag], params[:category], params[:datetimepicker], params[:datetimepicker2], current_user.id)
   end
 
   def new
@@ -49,7 +49,7 @@ class ExpensesController < ApplicationController
     authorize! :manage, @expense
     @expense.destroy
     flash[:success] = "Expense deleted"
-    redirect_to expenses_url
+    redirect_to my_expenses_url
   end
 
 

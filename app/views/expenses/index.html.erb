@@ -7,28 +7,43 @@
 <h2>Filter By Category</h2>
 
 <% Category.all.each do |category| %>
-    <%= link_to category.name, expenses_path(category: category.url_name, tag: params[:tag]) %> |
+    <%= link_to category.name, my_expenses_path(category: category.url_name, tag: params[:tag]) %> |
 <% end %>
 
 
 <h2>Filter By Tag</h2>
 
 <% Tag.all.each do |tag| %>
-    <%= link_to tag.name, expenses_path(category: params[:category], tag: tag.url_name) %> |
+    <%= link_to tag.name, my_expenses_path(category: params[:category], tag: tag.url_name) %> |
 <% end %>
 
 
 <h2>Filter By Type</h2>
 
-<%= link_to "All", expenses_path %> |
+<%= link_to "All", my_expenses_path %> |
 
-<%= link_to "Income", expenses_path(type: "income") %> |
+<%= link_to "Income", my_expenses_path(type: "income") %> |
 
-<%= link_to "Spendings", expenses_path(type: "spending") %>
+<%= link_to "Spendings", my_expenses_path(type: "spending") %>
+
+
+
+<h2>Filter by date range</h2>
+<%= form_tag my_expenses_path, :method => 'get' do %>
+    <p>
+      start time
+      <%= text_field_tag :datetimepicker, params[:datetimepicker] %>
+
+      end time
+      <%= text_field_tag :datetimepicker2, params[:datetimepicker2] %>
+
+      <%= submit_tag "Filter", :name => nil %>
+    </p>
+<% end %>
 
 
 <h2>Search by title or description</h2>
-<%= form_tag expenses_path, :method => 'get' do %>
+<%= form_tag my_expenses_path, :method => 'get' do %>
     <p>
       <%= text_field_tag :search, params[:search] %>
       <%= submit_tag "Search", :name => nil %>
